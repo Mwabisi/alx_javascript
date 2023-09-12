@@ -1,3 +1,4 @@
+#!/usr/bin/node
 class Rectangle {
     constructor(w, h) {
       if (!isPositiveInteger(w) || !isPositiveInteger(h)) {
@@ -12,4 +13,3 @@ class Rectangle {
       return n >= 1 && Number.isInteger(n);
     }
   }
-  
