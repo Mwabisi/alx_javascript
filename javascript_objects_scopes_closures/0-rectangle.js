@@ -1,5 +1,3 @@
-class Rectangle {
-}
+class Rectangle {constructor(w,h){this.width=w;this.height=h}}
 
-const rectangle = new Rectangle();
-console.log("Can create an instance");
+const r1 = new Rectangle();
