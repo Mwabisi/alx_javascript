@@ -3,5 +3,5 @@ class Rectangle {}
 
 const rectangleInstance = new Rectangle();
 
-console.log(rectangleInstance);
-console.log(rectangleInstance.constructor);
+console.log("Can create an instance");
+console.log(r1);
