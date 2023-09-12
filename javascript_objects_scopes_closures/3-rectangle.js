@@ -1,25 +1,26 @@
 class Rectangle {
-    constructor(width, height) {
-      if (width <= 0 || height <= 0) {
-        this.width = null;
-        this.height = null;
-      } else {
-        this.width = width;
-        this.height = height;
+    constructor(w, h) {
+      if (w <= 0 || h <= 0) {
+        // If w or h is equal to 0 or a negative number,
+        // create an empty object.
+        return {};
       }
+      
+      this.width = w;
+      this.height = h;
     }
   
     print() {
-      if (this.width === null || this.height === null) {
-        return;
-      }
-  
       for (let i = 0; i < this.height; i++) {
+        let row = '';
         for (let j = 0; j < this.width; j++) {
-          console.log('X', end='');
+          row += 'x';
         }
-        console.log();
+        console.log(row);
       }
     }
   }
   
+  // Usage example:
+  const rectangle = new Rectangle(5, 3);
+  rectangle.print();
