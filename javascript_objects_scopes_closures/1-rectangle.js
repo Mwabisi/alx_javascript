@@ -1,16 +1,11 @@
 #!/usr/bin/node
 class Rectangle {
-  constructor (w, h) {
-    this.width = w;
-    this.height = h;
+  constructor(width, height) {
+    this.width = width;
+    this.height = height;
   }
 }
 
-const rectangle = class Rectangle {
-  constructor (w, h) {
-    this.width = w;
-    this.height = h;
-  }
-}
-  console.log('${this.width} * ${this.height} = ${this.width * this.height}');
-  console.log('${this.width} / ${this.height} = ${this.width / this.height}');
+const rect = new Rectangle(3, 3);
+console.log(rect.width);
+console.log(rect.height);
