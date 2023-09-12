@@ -1,10 +1,13 @@
 #!/usr/bin/node
 class Rectangle {
-    constructor(w , h) {
-        this.width = width;
-        this.height = height;
+    constructor(width, height) {
+      this.width = width;
+      this.height = height;
     }
-}
+  }
+  const rect = new Rectangle(10, 5);
 
-const rectangle = new Rectangle(3, 3);
-console.log('${rectangle.width} - height: ${rectangle.height}');
+  console.log(rect.width);
+  
+  console.log(rect.height);
+   
