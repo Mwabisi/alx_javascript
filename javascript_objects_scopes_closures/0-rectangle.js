@@ -1,3 +1,7 @@
-class Rectangle {constructor(w,h){this.width=w;this.height=h}}
+#!/usr/bin/node
+class Rectangle {}
 
-const r1 = new Rectangle();
+const rectangleInstance = new Rectangle();
+
+console.log(rectangleInstance);
+console.log(rectangleInstance.constructor);
