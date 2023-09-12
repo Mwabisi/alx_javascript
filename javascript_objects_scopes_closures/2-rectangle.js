@@ -1,15 +1,12 @@
 #!/usr/bin/node
 class Rectangle {
-    constructor(w, h) {
-      if (!isPositiveInteger(w) || !isPositiveInteger(h)) {
+    constructor(width, height) {
+      if (width <= 0 || height <= 0) {
         this = null;
       } else {
-        this.width = w;
-        this.height = h;
+        this.width = width;
+        this.height = height;
       }
     }
-  
-    static isPositiveInteger(n) {
-      return n >= 1 && Number.isInteger(n);
-    }
   }
+  
