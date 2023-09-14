@@ -1,28 +1,19 @@
-class Rectangle {
-    constructor(width, height) {
-      if (width <= 0 || height <= 0) {
-        this.width = null;
-        this.height = null;
-      } else {
-        this.width = width;
-        this.height = height;
-      }
-    }
-  
-    print() {
-      if (this.width === null || this.height === null) {
-        return;
-      }
-  
-      for (let i = 0; i < this.height; i++) {
-        for (let j = 0; j < this.width; j++) {
-          console.log('X', end='');
-        }
-        console.log();
-      }
+#!/usr/bin/node
+
+module.exports = class Rectangle {
+  constructor (w, h) {
+    if (w > 0 && h > 0) {
+      this.width = w;
+      this.height = h;
     }
   }
+}
 
-  
-  const rect = new Rectangle(3, 3);
-  rect.print();
+print() {
+  if (this.height && this.width) {
+    const row = 'X'.repeat(this.width);
+    for (let i = 0; i < this.height; i++) {
+      console.log(row);
+    }
+  }
+}
