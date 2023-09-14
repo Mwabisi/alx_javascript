@@ -2,4 +2,4 @@
 
  }
  
- Module.exports = Rectangle {}
+ Module.exports = Rectangle {};
