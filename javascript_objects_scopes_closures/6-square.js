@@ -1,24 +1,19 @@
-class Square {
-    constructor(size) {
-        this.size = size;
-    }
+const square = new Square(5);
 
-    charPrint(c) {
-        if (c === undefined) {
-            c = 'X';
-        }
+square.charPrint('D'); // Prints the square using the character 'D'
 
-        for (let i = 0; i < this.size; i++) {
-            console.log(c.repeat(this.size));
-        }
-    }
-}
+square.charPrint(); // Prints the square using the character 'X'
 
-// Example usage:
-const mySquare = new Square(5);
+square.charPrint('KKK'); // Prints the square using the character 'KKK'
 
-// Call charPrint with 'O' as the character
-mySquare.charPrint('O');
+// Create a new square object with size 3
+const smallSquare = new Square(3);
 
-// Call charPrint with the default character 'X'
-mySquare.charPrint();
+// Print the small square using the character 'D'
+smallSquare.charPrint('D');
+
+// Double the size of the small square
+smallSquare.double();
+
+// Print the doubled small square using the character 'O'
+smallSquare.charPrint('O');
