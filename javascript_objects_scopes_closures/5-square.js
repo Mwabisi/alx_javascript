@@ -1,37 +1,42 @@
-class Rectangle {
-    constructor(width, height) {
-      this.width = width;
-      this.height = height;
+#!/usr/bin/node
+
+module.exports = class Rectangle {
+    constructor(w, h) {
+      if (w > 0 && h > 0) {
+        this.width = w;
+        this.height = h;
+      }
     }
-    
-    getArea() {
-      return this.width * this.height;
-    }
-    
-    getPerimeter() {
-      return 2 * (this.width + this.height);
+  
+    print() {
+      if (this.height && this.width) {
+        const row = 'X'.repeat(this.width);
+        for (let i = 0; i < this.height; i++) {
+          console.log(row);
+        }
+      }
     }
   }
   
-  // square.js
+    rotate() {
+      [this.width, this.height] = [this.height, this.width];
+    }
   
-  // Import the Rectangle class from 4-rectangle.js
-  const Rectangle = require('./4-rectangle');
-  
-  class Square extends Rectangle {
+    double() {
+      this.width *= 2;
+      this.height *= 2;
+    }
+}
+
+class Square extends Rectangle {
     constructor(size) {
-      // Call the constructor of Rectangle with size as width and height
-      super(size, size);
+        super(size, size);
     }
-  }
-  
-  // Export the Square class
-  module.exports = Square;
+}
 
-  const Square = require('./square');
-
-// Create a Square object
 const mySquare = new Square(5);
-
-console.log(mySquare.getArea()); 
-console.log(mySquare.getPerimeter());
+mySquare.print();
+mySquare.rotate();
+mySquare.print();
+mySquare.double();
+mySquare.print();
