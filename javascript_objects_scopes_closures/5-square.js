@@ -1,51 +1,37 @@
-class Square {
-    constructor(size) {
-      if (size < 0) {
-        throw new Error('Invalid square size.');
-      }
-  
-      this.size = size;
+class Rectangle {
+    constructor(width, height) {
+      this.width = width;
+      this.height = height;
     }
-  
-    print() {
-      for (let i = 0; i < this.size; i++) {
-        for (let j = 0; j < this.size; j++) {
-          console.log('*');
-        }
-  
-        console.log('\n');
-      }
+    
+    getArea() {
+      return this.width * this.height;
     }
-  
-    double() {
-      return new Square(this.size * 2);
-    }
-  
-    rotate() {
-      return new Square(this.size).map((row, i) => {
-        return row.map((cell, j) => {
-          return this.get(j, i);
-        });
-      });
-    }
-  
-    get(row, column) {
-      if (row < 0 || row >= this.size || column < 0 || column >= this.size) {
-        return undefined;
-      }
-  
-      return this.cells[row][column];
-    }
-  
-    set(row, column, value) {
-      if (row < 0 || row >= this.size || column < 0 || column >= this.size) {
-        return;
-      }
-  
-      this.cells[row][column] = value;
+    
+    getPerimeter() {
+      return 2 * (this.width + this.height);
     }
   }
+  
+  // square.js
+  
+  // Import the Rectangle class from 4-rectangle.js
+  const Rectangle = require('./4-rectangle');
+  
+  class Square extends Rectangle {
+    constructor(size) {
+      // Call the constructor of Rectangle with size as width and height
+      super(size, size);
+    }
+  }
+  
+  // Export the Square class
+  module.exports = Square;
 
-  const square = new Square(-4);
+  const Square = require('./square');
 
-// Error: Invalid square size.
+// Create a Square object
+const mySquare = new Square(5);
+
+console.log(mySquare.getArea()); 
+console.log(mySquare.getPerimeter());
