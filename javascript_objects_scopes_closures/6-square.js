@@ -1,21 +1,24 @@
-class Square extends Square {
+class Square {
     constructor(size) {
-      super(size);
+        this.size = size;
     }
-  
-    charPrint(c = 'X') {
-      for (let i = 0; i < this.size; i++) {
-        for (let j = 0; j < this.size; j++) {
-          console.log(c);
+
+    charPrint(c) {
+        if (c === undefined) {
+            c = 'X';
         }
-  
-        console.log('\n');
-      }
+
+        for (let i = 0; i < this.size; i++) {
+            console.log(c.repeat(this.size));
+        }
     }
-  }
+}
 
-  const square = new Square(4);
+// Example usage:
+const mySquare = new Square(5);
 
-square.charPrint();
+// Call charPrint with 'O' as the character
+mySquare.charPrint('O');
 
-square.charPrint('#');
+// Call charPrint with the default character 'X'
+mySquare.charPrint();
