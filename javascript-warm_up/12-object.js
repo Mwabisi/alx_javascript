@@ -1,3 +1,6 @@
-const myObject = { value: 12 };
+const object = { type: 'object', value: 12 };
 
-console.log(typeof myObject);
+const updatedObject = { ...object, value: 89 };
+
+console.log(object);
+console.log(updatedObject);
