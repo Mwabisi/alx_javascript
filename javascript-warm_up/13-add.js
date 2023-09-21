@@ -1,6 +1,3 @@
 #!/usr/bin/node
-function add(a, b) {
-    a+b;
-}
-
-module.exports.add = add;
+const add = require('./-add').add;
+console.log(add(3, 5));
