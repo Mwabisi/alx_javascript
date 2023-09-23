@@ -1,4 +1,4 @@
-module.exports = class Rectangle {
+class Rectangle {
   constructor(w, h) {
     if (w > 0 && h > 0) {
       this.width = w;
@@ -8,8 +8,8 @@ module.exports = class Rectangle {
 
   print() {
     if (this.height && this.width) {
-      const row = 'X'.repeat(this.width);
       for (let i = 0; i < this.height; i++) {
+        const row = 'X'.repeat(this.width);
         console.log(row);
       }
     } else {
@@ -18,16 +18,24 @@ module.exports = class Rectangle {
   }
 
   rotate() {
-    [this.width, this.height] = [this.height, this.width];
-    return !!this.width && !!this.height;
+    if (this.width && this.height) {
+      [this.width, this.height] = [this.height, this.width];
+      return true;
+    } else {
+      return false;
+    }
   }
 
   double() {
-    this.width *= 2;
-    this.height *= 2;
-    return !!this.width && !!this.height;
+    if (this.width && this.height) {
+      this.width *= 2;
+      this.height *= 2;
+      return true;
+    } else {
+      return false;
+    }
   }
-};
+}
 
 class Square extends Rectangle {
   constructor(size) {
@@ -35,16 +43,28 @@ class Square extends Rectangle {
   }
 }
 
-const mySquare = new Square(5);
+function testOutput(size) {
+  console.log(`Correct output - size = ${size}`);
+  const square = new Square(size);
 
-mySquare.print();
+  square.print();
+  console.log(`Correct output - size = ${size} - print`);
 
-const rotated = mySquare.rotate();
-if (rotated) {
-  mySquare.print(); 
+  if (square.double()) {
+    console.log(`Correct output - size = ${size} - print - double - print`);
+  } else {
+    console.error(`Invalid arguments - size = ${size}`);
+    return;
+  }
+
+  if (square.rotate()) {
+    console.log(`Correct output - size = ${size} - print - double - print - rotate - print`);
+  } else {
+    console.error(`Invalid arguments - size = ${size}`);
+    return;
+  }
 }
-const doubled = mySquare.double(); 
 
-if (doubled) {
-  mySquare.print(); 
-}
+testOutput(4);
+testOutput(5);
+testOutput(-1);
