@@ -9,7 +9,10 @@ class Rectangle {
   print() {
     if (this.height && this.width) {
       for (let i = 0; i < this.height; i++) {
-        const row = 'X'.repeat(this.width);
+        let row = '';
+        for (let j = 0; j < this.width; j++) {
+          row += 'X';
+        }
         console.log(row);
       }
     } else {
@@ -67,4 +70,4 @@ function testOutput(size) {
 
 testOutput(4);
 testOutput(5);
-testOutput(-1);
+testOutput(-4);
