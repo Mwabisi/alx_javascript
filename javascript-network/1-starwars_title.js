@@ -1,6 +1,7 @@
 #!/usr/bin/node
 const request = require('request');
 
+// Define the movie ID as a command line argument
 const movieId = process.argv[2];
 
 // Create the URL for the Star Wars API endpoint
@@ -16,6 +17,7 @@ request(apiUrl, (error, response, body) => {
     // Parse the JSON response
     const movieData = JSON.parse(body);
 
-    console.log(`Title of Episode ${movieData.episode_id}: ${movieData.title}`);
+    // Print the title of the movie
+    console.log(movieData.title);
   }
 });
