@@ -1,6 +1,7 @@
 #!/usr/bin/node
 const request = require('request');
 
+// Define the API URL as a command line argument
 const apiUrl = process.argv[2];
 
 // Define the character ID for Wedge Antilles
@@ -19,8 +20,11 @@ request(apiUrl, (error, response, body) => {
     let numberOfFilmsWithWedgeAntilles = 0;
 
     for (const film of filmsData.results) {
-      if (film.characters.includes(`https://swapi-api.alx-tools.com/api/people/${characterId}/`)) {
-        numberOfFilmsWithWedgeAntilles++;
+      for (const characterUrl of film.characters) {
+        if (characterUrl.includes(`/api/people/${characterId}/`)) {
+          numberOfFilmsWithWedgeAntilles++;
+          break; 
+        }
       }
     }
 
