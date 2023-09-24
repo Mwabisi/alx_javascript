@@ -1,7 +1,7 @@
 #!/usr/bin/node
 const request = require('request');
 
-const apiUrl = 'https://swapi-api.alx-tools.com/api/films/';
+const apiUrl = process.argv[2];
 
 // Define the character ID for Wedge Antilles
 const characterId = 18;
@@ -16,12 +16,15 @@ request(apiUrl, (error, response, body) => {
     // Parse the JSON response
     const filmsData = JSON.parse(body);
 
-    // Filter the films where Wedge Antilles is present
-    const filmsWithWedgeAntilles = filmsData.results.filter(film =>
-      film.characters.includes(`https://swapi-api.alx-tools.com/api/people/${characterId}/`)
-    );
+    let numberOfFilmsWithWedgeAntilles = 0;
+
+    for (const film of filmsData.results) {
+      if (film.characters.includes(`https://swapi-api.alx-tools.com/api/people/${characterId}/`)) {
+        numberOfFilmsWithWedgeAntilles++;
+      }
+    }
 
     // Print the number of films with Wedge Antilles
-    console.log(`Number of films with Wedge Antilles: ${filmsWithWedgeAntilles.length}`);
+    console.log(numberOfFilmsWithWedgeAntilles);
   }
 });
