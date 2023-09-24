@@ -1,16 +1,21 @@
 #!/usr/bin/node
 const request = require('request');
 
-const getStarWarsMovieByEpisode = async (episodeNumber) => {
-  const response = await request(`https://swapi-api.alx-tools.com/api/films/${episodeNumber}`);
-  const movieData = JSON.parse(response.body);
+const movieId = process.argv[2];
 
-  return movieData;
-};
+// Create the URL for the Star Wars API endpoint
+const apiUrl = `https://swapi-api.alx-tools.com/api/films/${movieId}`;
 
-const printStarWarsMovieTitle = async (episodeNumber) => {
-  const movieData = await getStarWarsMovieByEpisode(episodeNumber);
-  const movieTitle = movieData.title;
+// Make a GET request to the API
+request(apiUrl, (error, response, body) => {
+  if (error) {
+    console.error('Error:', error);
+  } else if (response.statusCode !== 200) {
+    console.error('API request failed with status code:', response.statusCode);
+  } else {
+    // Parse the JSON response
+    const movieData = JSON.parse(body);
 
-  console.log(`Star Wars Episode ${episodeNumber}: ${movieTitle}`);
-};
+    console.log(`Title of Episode ${movieData.episode_id}: ${movieData.title}`);
+  }
+});
