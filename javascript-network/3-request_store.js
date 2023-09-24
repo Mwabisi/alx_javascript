@@ -7,18 +7,15 @@ const downloadWebpage = async (url, filePath) => {
 
   // Check if the response was successful.
   if (response.statusCode !== 200) {
-    throw new Error(`Failed to download webpage: ${url}`);
+    if (response.statusCode === 204) {
+      console.log('The webpage is empty');
+    } else {
+      throw new Error(`Failed to download webpage: ${url}`);
+    }
   }
 
-  // Save the response body to the file.
-  fs.writeFileSync(filePath, response.body, { encoding: 'utf-8' });
-
-  console.log(`Webpage downloaded to ${filePath}`);
+  // Save the response body to the file, if there is any.
+  if (response.statusCode === 200) {
+    fs.writeFileSync(filePath, response.body, { encoding: 'utf-8' });
+  }
 };
-
-// Example usage:
-
-const url = 'https://www.google.com';
-const filePath = './google.html';
-
-downloadWebpage(url, filePath);
